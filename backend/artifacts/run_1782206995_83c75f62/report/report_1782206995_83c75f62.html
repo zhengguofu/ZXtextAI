@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>测试报告 - 示例站点验证</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,'Segoe UI',Roboto,'Microsoft YaHei',Arial,sans-serif; background:#f5f7fa; color:#1f2937; }
+.container { max-width:1200px; margin:0 auto; padding:20px; }
+.header { background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; padding:30px; border-radius:12px; margin-bottom:24px; }
+.header h1 { font-size:26px; margin-bottom:8px; }
+.header p { opacity:.9; font-size:14px; margin-top:2px; }
+.badges { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+.badge { padding:6px 16px; border-radius:20px; font-size:14px; font-weight:600; background:#6b7280; color:#fff; }
+.badge.success { background:#10b981; } .badge.failed { background:#ef4444; }
+.badge.blocked { background:#f59e0b; } .badge.pending { background:#6b7280; }
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; margin-bottom:24px; }
+.stat-card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 4px rgba(0,0,0,.05); }
+.stat-card .value { font-size:32px; font-weight:700; margin-bottom:6px; }
+.stat-card .label { font-size:13px; color:#6b7280; }
+.stat-card.total .value { color:#6366f1; } .stat-card.success .value { color:#10b981; }
+.stat-card.failed .value { color:#ef4444; } .stat-card.blocked .value { color:#f59e0b; }
+.section { background:#fff; border-radius:12px; padding:24px; margin-bottom:24px; box-shadow:0 2px 4px rgba(0,0,0,.05); }
+.section-title { font-size:18px; font-weight:600; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid #e5e7eb; }
+.warn { background:#fef3c7; border-left:4px solid #f59e0b; padding:16px; border-radius:0 6px 6px 0; margin-bottom:24px; }
+.warn h4 { color:#d97706; margin-bottom:8px; } .warn p { color:#92400e; font-size:14px; }
+.error { background:#fef2f2; border-left:4px solid #ef4444; padding:16px; border-radius:0 6px 6px 0; font-family:monospace; font-size:13px; color:#991b1b; white-space:pre-wrap; word-break:break-all; max-height:320px; overflow:auto; }
+.steps-list { display:flex; flex-direction:column; gap:16px; }
+.step-card { border:2px solid #e5e7eb; border-radius:10px; overflow:hidden; }
+.step-card.passed { border-color:#10b981; } .step-card.failed { border-color:#ef4444; } .step-card.blocked { border-color:#f59e0b; }
+.step-header { display:flex; align-items:center; padding:12px 16px; background:#f9fafb; gap:12px; }
+.dot { width:14px; height:14px; border-radius:50%; flex-shrink:0; background:#6b7280; }
+.dot.passed { background:#10b981; } .dot.failed { background:#ef4444; } .dot.blocked { background:#f59e0b; }
+.step-info { flex:1; min-width:0; }
+.step-name { font-weight:600; font-size:14px; }
+.step-desc { font-size:12px; color:#6b7280; margin-top:2px; }
+.step-meta { font-size:12px; color:#9ca3af; white-space:nowrap; }
+.step-body { padding:16px; }
+.meta-line { color:#6b7280; font-size:13px; margin-bottom:10px; word-break:break-all; }
+.shots { display:flex; gap:12px; flex-wrap:wrap; }
+.shot { flex:1; min-width:240px; }
+.shot span { display:block; font-size:12px; color:#6b7280; margin-bottom:4px; }
+.shot img { width:100%; border:1px solid #e5e7eb; border-radius:6px; cursor:pointer; }
+.links { margin-top:10px; display:flex; gap:14px; flex-wrap:wrap; font-size:13px; }
+.links a { color:#6366f1; text-decoration:none; } .links a:hover { text-decoration:underline; }
+.footer { text-align:center; padding:20px; color:#9ca3af; font-size:13px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>自动化测试报告</h1>
+    <p>测试用例: 示例站点验证</p>
+    <p>执行ID: 1782206995_83c75f62</p>
+    <p>开始: 2026-06-23 17:29:58 &nbsp;|&nbsp; 结束: 2026-06-23 17:30:02</p>
+    <div class="badges">
+      <span class="badge success">通过</span>
+      <span class="badge">耗时: 4.35秒</span>
+      <span class="badge">通过率: 100.0%</span>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card total"><div class="value">5</div><div class="label">总步骤数</div></div>
+    <div class="stat-card success"><div class="value">5</div><div class="label">成功</div></div>
+    <div class="stat-card failed"><div class="value">0</div><div class="label">失败</div></div>
+    <div class="stat-card blocked"><div class="value">0</div><div class="label">阻塞</div></div>
+  </div>
+
+  
+  <div class="section"><div class="section-title">全程录屏</div><video controls style="width:100%;max-width:960px;border-radius:8px;background:#000;"><source src="../video/page@4615bae87b73d34ff5ef14051361f4ca.webm" type="video/webm">您的浏览器不支持视频播放</video><p style="margin-top:8px;color:#6b7280;font-size:13px;">视频文件: ../video/page@4615bae87b73d34ff5ef14051361f4ca.webm</p></div>
+
+  <div class="section">
+    <div class="section-title">执行步骤详情（共 5 步）</div>
+    <div class="steps-list"><div class="step-card passed"><div class="step-header"><div class="dot passed"></div><div class="step-info"><div class="step-name">步骤 1: 导航到页面 [通过]</div><div class="step-desc">打开 example.com 首页</div></div><div class="step-meta">⏱️ 3.07s</div></div><div class="step-body"><div class="meta-line"><b>URL:</b> https://example.com/ &nbsp;|&nbsp; <b>标题:</b> - &nbsp;|&nbsp; <b>类型:</b> navigate</div><div class="shots"><div class="shot"><span>执行后</span><img src="../screenshots/step_1_after_1782206999277.png" onclick="window.open(this.src)"></div></div></div></div><div class="step-card passed"><div class="step-header"><div class="dot passed"></div><div class="step-info"><div class="step-name">步骤 2: 断言标题包含 [通过]</div><div class="step-desc">断言标题包含 Example</div></div><div class="step-meta">⏱️ 0.11s</div></div><div class="step-body"><div class="meta-line"><b>URL:</b> https://example.com/ &nbsp;|&nbsp; <b>标题:</b> Example Domain &nbsp;|&nbsp; <b>类型:</b> assert</div><div class="shots"><div class="shot"><span>执行前</span><img src="../screenshots/step_2_before_1782207001562.png" onclick="window.open(this.src)"></div><div class="shot"><span>执行后</span><img src="../screenshots/step_2_after_1782207001622.png" onclick="window.open(this.src)"></div></div></div></div><div class="step-card passed"><div class="step-header"><div class="dot passed"></div><div class="step-info"><div class="step-name">步骤 3: 等待元素 [通过]</div><div class="step-desc">等待 h1 标题出现</div></div><div class="step-meta">⏱️ 0.17s</div></div><div class="step-body"><div class="meta-line"><b>URL:</b> https://example.com/ &nbsp;|&nbsp; <b>标题:</b> Example Domain &nbsp;|&nbsp; <b>类型:</b> waitFor</div><div class="shots"><div class="shot"><span>执行前</span><img src="../screenshots/step_3_before_1782207001673.png" onclick="window.open(this.src)"></div><div class="shot"><span>执行后</span><img src="../screenshots/step_3_after_1782207001785.png" onclick="window.open(this.src)"></div></div></div></div><div class="step-card passed"><div class="step-header"><div class="dot passed"></div><div class="step-info"><div class="step-name">步骤 4: 断言文本包含 [通过]</div><div class="step-desc">断言 h1 文本</div></div><div class="step-meta">⏱️ 0.12s</div></div><div class="step-body"><div class="meta-line"><b>URL:</b> https://example.com/ &nbsp;|&nbsp; <b>标题:</b> Example Domain &nbsp;|&nbsp; <b>类型:</b> assert</div><div class="shots"><div class="shot"><span>执行前</span><img src="../screenshots/step_4_before_1782207001839.png" onclick="window.open(this.src)"></div><div class="shot"><span>执行后</span><img src="../screenshots/step_4_after_1782207001912.png" onclick="window.open(this.src)"></div></div></div></div><div class="step-card passed"><div class="step-header"><div class="dot passed"></div><div class="step-info"><div class="step-name">步骤 5: 固定等待 [通过]</div><div class="step-desc">停留 0.5 秒以便录屏</div></div><div class="step-meta">⏱️ 0.56s</div></div><div class="step-body"><div class="meta-line"><b>URL:</b> https://example.com/ &nbsp;|&nbsp; <b>标题:</b> Example Domain &nbsp;|&nbsp; <b>类型:</b> wait</div><div class="shots"><div class="shot"><span>执行后</span><img src="../screenshots/step_5_after_1782207002476.png" onclick="window.open(this.src)"></div></div></div></div></div>
+  </div>
+
+  <div class="section"><div class="section-title">测试产物</div><p style="color:#6b7280;font-size:14px;">产物目录: <code>artifacts\run_1782206995_83c75f62</code></p><ul style="margin-top:12px;padding-left:20px;color:#4b5563;font-size:14px;line-height:1.9;"><li>Trace 追踪文件: <code>../trace/trace_1782206995_83c75f62.zip</code>（可用 <code>playwright show-trace</code> 打开）</li><li>网络 HAR: <a href="../har/network_1782206995_83c75f62.har" target="_blank">../har/network_1782206995_83c75f62.har</a></li><li>screenshots/ - 每步截图</li><li>video/ - 全程录屏</li><li>dom/ - 页面DOM快照</li><li>console/ - 控制台日志</li><li>logs/ - 步骤结构化日志</li></ul></div>
+
+  <div class="footer">
+    <p>生成时间: 2026-06-23 17:30:02</p>
+    <p>ZXtextAI 自动化测试框架</p>
+  </div>
+</div>
+</body>
+</html>

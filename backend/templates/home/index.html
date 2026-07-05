@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZXtextAI - AI驱动的自动化测试平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .card-icon.blue { background: #e6f4ff; color: #1890ff; }
+        .card-icon.green { background: #f6ffed; color: #52c41a; }
+        .card-icon.purple { background: #f9f0ff; color: #722ed1; }
+        .card-icon.orange { background: #fff7e6; color: #fa8c16; }
+        .card-icon.red { background: #fff1f0; color: #f5222d; }
+        .card-icon.cyan { background: #e6fffb; color: #13c2c2; }
+
+        .card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a2e;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .api-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .api-section h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            color: #1a1a2e;
+        }
+
+        .api-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .api-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .api-item:hover {
+            background: #f0f0ff;
+            transform: translateX(4px);
+        }
+
+        .api-item .method {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .api-item .method.get { background: #e6f4ff; color: #1890ff; }
+        .api-item .method.post { background: #f6ffed; color: #52c41a; }
+        .api-item .method.put { background: #fff7e6; color: #fa8c16; }
+        .api-item .method.delete { background: #fff1f0; color: #f5222d; }
+
+        .api-item .path {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .api-item .desc {
+            font-size: 12px;
+            color: #888;
+            margin-top: 6px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: white;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #52c41a;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .quick-link {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .quick-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ZXtextAI</h1>
+            <p>AI驱动的智能自动化测试平台，集成需求分析、用例生成、自动化执行与测试报告全流程</p>
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>后端服务运行中</span>
+            </div>
+            <div class="quick-links">
+                <a href="/api/docs/" class="quick-link">📖 API文档</a>
+                <a href="/api/redoc/" class="quick-link">📋 ReDoc文档</a>
+                <a href="/api/core/health/" class="quick-link">🏥 健康检查</a>
+                <a href="/admin/" class="quick-link">⚙️ 管理后台</a>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon blue">🎯</div>
+                <h3>需求分析</h3>
+                <p>基于AI技术自动分析需求文档，提取测试要点，生成测试用例，提升测试覆盖率和效率。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon green">🤖</div>
+                <h3>UI自动化测试</h3>
+                <p>支持Web端自动化测试，自动生成测试脚本，智能处理验证码，生成详细测试报告。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon purple">📱</div>
+                <h3>APP自动化测试</h3>
+                <p>支持移动端自动化测试，设备管理，元素捕获，场景构建，自动化执行与报告生成。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon orange">🔌</div>
+                <h3>API测试</h3>
+                <p>接口管理、环境配置、自动化测试执行、请求历史记录与报告分析。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon red">🧠</div>
+                <h3>AI评审</h3>
+                <p>AI自动评审测试用例，发现潜在问题，提出优化建议，确保用例质量。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon cyan">📊</div>
+                <h3>测试报告</h3>
+                <p>多维度测试报告生成，支持PDF导出，可视化展示测试结果与趋势分析。</p>
+            </div>
+        </div>
+
+        <div class="api-section">
+            <h2>📡 常用API接口</h2>
+            <div class="api-grid">
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/core/health/</div>
+                    <div class="desc">健康检查</div>
+                </div>
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/projects/</div>
+                    <div class="desc">项目列表</div>
+                </div>
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/testcases/</div>
+                    <div class="desc">测试用例列表</div>
+                </div>
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/executions/</div>
+                    <div class="desc">执行记录列表</div>
+                </div>
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/reports/</div>
+                    <div class="desc">测试报告列表</div>
+                </div>
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/assistant/</div>
+                    <div class="desc">AI助手</div>
+                </div>
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/requirement-analysis/</div>
+                    <div class="desc">需求分析</div>
+                </div>
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/ui-automation/</div>
+                    <div class="desc">UI自动化</div>
+                </div>
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/app-automation/</div>
+                    <div class="desc">APP自动化</div>
+                </div>
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/auth/login/</div>
+                    <div class="desc">用户登录</div>
+                </div>
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/data-factory/</div>
+                    <div class="desc">数据工厂</div>
+                </div>
+                <div class="api-item">
+                    <span class="method get">GET</span>
+                    <div class="path">/api/reviews/</div>
+                    <div class="desc">评审管理</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>ZXtextAI - AI驱动的自动化测试平台 | 后端服务运行于 http://127.0.0.1:8000</p>
+        </div>
+    </div>
+</body>
+</html>
